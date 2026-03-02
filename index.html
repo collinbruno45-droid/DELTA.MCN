@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lease — Residential & Business Premises</title>
+    <link rel="stylesheet" href="styles.css" />
+       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <h1 class="logo">Lease</h1>
+            <nav class="nav">
+                <a href="#listings">Listings</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Find residential and business premises</h2>
+                <p>Search, filter and book short- or long-term rentals — homes and commercial spaces.</p>
+                <div class="search-row">
+                    <input id="searchInput" type="search" placeholder="City, neighbourhood, or building" />
+                    <select id="typeFilter">
+                        <option value="all">All types</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Business">Business</option>
+                    </select>
+                    <input id="radiusInput" type="number" min="1" placeholder="Radius km" style="width:110px" />
+                    <button id="locBtn" class="secondary">Use my location</button>
+                    <button id="searchBtn">Search</button>
+                </div>
+                <div class="location-status container" style="padding-top:0.5rem;">
+                    <small id="locStatus" style="color:var(--muted)"></small>
+                </div>
+            </div>
+        </section>
+
+        <section id="listings" class="container listings-section">
+            <h3>Available premises</h3>
+            <div id="listingsGrid" class="listings-grid"></div>
+        </section>
+
+        <section id="about" class="container about">
+            <h3>About Lease</h3>
+            <p>We connect tenants with verified residential and commercial landlords. Browse curated listings and request viewings or book directly online.</p>
+        </section>
+
+        <section id="contact" class="container contact">
+            <h3>Contact</h3>
+            <p>Email us at <a href="mailto:info@lease.example">info@lease.example</a> or use the form below.</p>
+            <form id="contactForm" class="contact-form">
+                <input type="text" name="name" placeholder="Your name" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+
+        <section id="admin" class="container admin">
+            <h3>Admin — Add Listing</h3>
+            <p>Use this form to add a new listing (saved to <code>listings.json</code> on the server).</p>
+            <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.5rem">
+                <button id="adminLoginBtn" class="secondary">Admin login</button>
+                <button id="adminLogoutBtn" class="secondary hidden">Logout</button>
+                <small id="adminUserLabel" style="color:var(--muted)"></small>
+            </div>
+            <form id="adminForm" class="contact-form">
+                <input name="title" placeholder="Title" required />
+                <select name="type">
+                    <option value="Residential">Residential</option>
+                    <option value="Business">Business</option>
+                </select>
+                <input name="price" type="number" placeholder="Price per month" required />
+                <input name="location" placeholder="Location / address" required />
+                <div style="display:flex;gap:0.5rem">
+                    <input name="lat" placeholder="Latitude" />
+                    <input name="lon" placeholder="Longitude" />
+                    <button id="geocodeBtn" type="button" class="secondary">Geocode</button>
+                </div>
+                <div style="display:flex;gap:0.5rem">
+                    <input name="beds" type="number" placeholder="Beds" />
+                    <input name="baths" type="number" placeholder="Baths" />
+                    <input name="size" type="number" placeholder="Size (m²)" />
+                </div>
+                <input name="image" placeholder="Image URL" />
+                <button type="submit" class="btn">Add listing</button>
+                <div id="adminStatus" style="color:var(--muted);font-size:0.95rem"></div>
+            </form>
+        </section>
+
+        <!-- Admin login modal -->
+        <div id="loginModal" class="modal hidden">
+            <div class="modal-content" style="max-width:420px">
+                <button id="loginClose" class="modal-close">×</button>
+                <h3>Admin login</h3>
+                <form id="loginForm" style="display:grid;gap:0.5rem">
+                    <input name="user" placeholder="Username" required />
+                    <input name="pass" type="password" placeholder="Password" required />
+                    <div style="display:flex;gap:0.5rem">
+                        <button type="submit" class="btn">Sign in</button>
+                        <button id="loginCancel" type="button" class="secondary">Cancel</button>
+                    </div>
+                    <div id="loginStatus" style="color:var(--muted)"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>&copy; 2026 Lease — Residential & Business Premises</small>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="modalClose" class="modal-close">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

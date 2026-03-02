@@ -1,0 +1,58 @@
+/* Basic layout and responsive styles for Lease site */
+:root{
+  --accent:#2b6ef6;
+  --muted:#666;
+  --card-bg:#fff;
+  --page-bg:#f5f7fb;
+  --max-width:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;margin:0;background:var(--page-bg);color:#111}
+.container{max-width:var(--max-width);margin:0 auto;padding:1rem}
+.site-header{background:#fff;border-bottom:1px solid #e6e9ef}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem}
+.logo{margin:0;font-size:1.25rem;color:var(--accent)}
+.nav a{margin-left:1rem;color:var(--muted);text-decoration:none}
+.hero{padding:2.25rem 0;text-align:center;background:linear-gradient(180deg, #ffffff 0%, #eef3ff 100%)}
+.hero h2{margin:0 0 0.5rem;font-size:1.6rem}
+.hero p{margin:0 0 1rem;color:var(--muted)}
+.search-row{display:flex;gap:0.5rem;justify-content:center;margin-top:1rem}
+.search-row input,.search-row select{padding:0.6rem 0.8rem;border:1px solid #d7dbe7;border-radius:6px}
+.search-row button{background:var(--accent);color:#fff;border:none;padding:0.6rem 0.9rem;border-radius:6px;cursor:pointer}
+.search-row .secondary{background:#e9eefc;color:var(--accent);border:1px solid rgba(43,110,246,0.15)}
+.listings-section h3{margin-top:1.25rem}
+.listings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.card{background:var(--card-bg);border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(24,39,75,0.06)}
+.card img{width:100%;height:160px;object-fit:cover}
+.card-body{padding:0.75rem}
+.card-title{font-weight:600;margin:0 0 0.25rem}
+.card-meta{font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem}
+.card-actions{display:flex;justify-content:space-between;align-items:center}
+.btn{background:var(--accent);color:#fff;padding:0.5rem 0.75rem;border-radius:6px;border:none;cursor:pointer}
+.secondary{background:#e9eefc;color:var(--accent)}
+.about,.contact{padding:1.25rem 0}
+.contact-form{display:grid;grid-template-columns:1fr;gap:0.5rem;max-width:560px}
+.contact-form input,.contact-form textarea{padding:0.6rem;border:1px solid #d7dbe7;border-radius:6px}
+.site-footer{padding:1rem 0;text-align:center;color:var(--muted)}
+.location-status{font-size:0.9rem}
+.hidden{display:none}
+.modal{position:fixed;inset:0;background:rgba(12,22,46,0.5);display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-content{background:#fff;border-radius:8px;max-width:720px;width:100%;padding:1rem;position:relative}
+.modal-close{position:absolute;right:0.6rem;top:0.4rem;background:none;border:none;font-size:1.5rem;cursor:pointer}
+
+@media (max-width:900px){
+  .listings-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .header-inner{padding:0.5rem}
+  .search-row{flex-direction:column;align-items:stretch}
+  .listings-grid{grid-template-columns:1fr}
+  .hero h2{font-size:1.2rem}
+}
+
+.card-footer{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0}
+.tag{background:#f1f6ff;color:var(--accent);padding:0.25rem 0.5rem;border-radius:999px;font-size:0.75rem}
+.price{font-weight:700}
+
+.mini-map{margin:0.5rem 0}
+.mini-map .map{width:100%;height:180px;border-radius:6px}
